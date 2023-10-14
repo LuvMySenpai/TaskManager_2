@@ -14,56 +14,99 @@
             <ColumnDefinition Width="0.1*" />
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <Border BorderBrush="Blue" CornerRadius="6"  Height="30" VerticalAlignment="Top"  BorderThickness="2" Grid.Column="0">
-            <TextBox Background="Blue" Foreground="White"  Height="30" VerticalAlignment="Top">ToDo</TextBox>
+        <Border BorderBrush="Blue" Background="Blue" CornerRadius="6"  Height="30" VerticalAlignment="Top"  BorderThickness="2" Grid.Column="0">
+            <TextBlock Foreground="White" FontSize="18" Height="30" VerticalAlignment="Top">ToDo</TextBlock>
         </Border>
         <ListBox x:Name="toDoTasks" Grid.Column="0" Height="NaN" Margin="0,35,0,0" HorizontalContentAlignment="Stretch">
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <Border BorderBrush="Gray" Height="110" BorderThickness="1" CornerRadius="2">
-                        <Grid Grid.Column="0"  Height="110">
-                            <TextBlock FontSize="13" Background="#C6E2FF" Margin="3" Height="20" VerticalAlignment="Top" HorizontalAlignment="Left" Text="{Binding CreatedDateFormatted}"/>
-                            <TextBlock FontSize="13" Background="#FA8072" Margin="3" Height="20" VerticalAlignment="Top" HorizontalAlignment="Right" Text="{Binding DeadlineDateFormatted}"/>
-                            <TextBlock FontSize="15" VerticalAlignment="Center" Text="{Binding Name}"/>
-                            <TextBlock FontSize=""/>
-                            <TextBlock VerticalAlignment="Bottom" Margin="3" HorizontalAlignment="Left" FontSize="14" Text="{Binding Id}"/>
+                    <Border BorderBrush="Gray" Height="120" BorderThickness="1" CornerRadius="2">
+                        <Grid Grid.Column="0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <Border Grid.Row="0" CornerRadius="5" Height="20" Background="#C6E2FF" HorizontalAlignment="Left" BorderThickness="1" Margin="3" >
+                                <TextBlock FontSize="13" HorizontalAlignment="Left" Text="{Binding CreatedDateFormatted}"/>
+                            </Border>
+
+                            <Border Grid.Row="0" CornerRadius="5" Height="20" Background="#FA8072" HorizontalAlignment="Right" BorderThickness="1" Margin="3" >
+                                <TextBlock FontSize="13" HorizontalAlignment="Right" Text="{Binding DeadlineDateFormatted}"/>
+                            </Border>
+                            
+                            <TextBlock Grid.Row="1" FontSize="16" Text="{Binding Name}"/>
+                            <TextBlock Grid.Row="2" FontSize="13" VerticalAlignment="Bottom" HorizontalAlignment="Left" Text="{Binding Priority}"/>
+                            <Button Grid.Row="3" Margin="5 0 0 0" Height="22" Width="100" Content="Редактировать" Tag="{Binding Id}" FontSize="14" HorizontalAlignment="Left"/>
+                            <Button Grid.Row="3" Margin="0 0 5 0" Height="22" Width="100" Content="Удалить" Tag="{Binding Id}" Click="EditTask_Click" FontSize="14" HorizontalAlignment="Right"/>
+                            <TextBlock Grid.Row="4" Margin="3" HorizontalAlignment="Left" FontSize="14" Text="{Binding Id}"/>
                         </Grid>
                     </Border>
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-        <Border Grid.Column="2" BorderThickness="1" BorderBrush="Orange" Height="30"  VerticalAlignment="Top" CornerRadius="6">
-            <TextBox Background="Orange" Foreground="Black">Work In Progress</TextBox>
+        <Border Grid.Column="2" BorderThickness="2" Background="Orange" BorderBrush="Orange" Height="30" VerticalAlignment="Top" CornerRadius="6">
+            <TextBlock Foreground="White" FontSize="18">Work In Progress</TextBlock>
         </Border>
         <ListBox x:Name="wrkInPrgsTasks" Grid.Column="2" Height="NaN" Margin="0,35,0,0" HorizontalContentAlignment="Stretch">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <Border BorderBrush="Gray" Height="110" BorderThickness="1" CornerRadius="2">
-                        <Grid Grid.Column="0" Height="110">
-                            <TextBlock FontSize="10" Background="#D3D3D3" Margin="3" Width="60" Height="20" VerticalAlignment="Top" Text="{Binding CreatedDate}"/>
-                            <TextBlock VerticalAlignment="Center" Text="{Binding Name}"/>
-                            <TextBlock VerticalAlignment="Bottom" Margin="3" HorizontalAlignment="Left" FontSize="12" Width="250" Background="#D3D3D3" Text="{Binding Id}"/>
+                        <Grid Grid.Column="0"  Height="150">
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <Border Grid.Row="0" CornerRadius="5" Height="20" Background="#C6E2FF" HorizontalAlignment="Left" BorderThickness="1" Margin="3" >
+                                <TextBlock FontSize="13" HorizontalAlignment="Left" Text="{Binding CreatedDateFormatted}"/>
+                            </Border>
+
+                            <Border Grid.Row="0" CornerRadius="5" Height="20" Background="#FA8072" HorizontalAlignment="Right" BorderThickness="1" Margin="3" >
+                                <TextBlock FontSize="13" HorizontalAlignment="Right" Text="{Binding DeadlineDateFormatted}"/>
+                            </Border>
+
+                            <TextBlock Grid.Row="1" FontSize="16" Text="{Binding Name}"/>
+                            <TextBlock Grid.Row="2" FontSize="13" HorizontalAlignment="Left" Text="{Binding Priority}"/>
+                            <TextBlock Grid.Row="3" Margin="3" HorizontalAlignment="Left" FontSize="14" Text="{Binding Id}"/>
                         </Grid>
                     </Border>
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-        <Border Grid.Column="4" BorderThickness="1"  BorderBrush="Green" Height="30"  VerticalAlignment="Top">
-            <TextBox Background="Green" Foreground="Black">Done</TextBox>
+        <Border Grid.Column="4" BorderThickness="2" Background="Green" BorderBrush="Green" Height="30" VerticalAlignment="Top" CornerRadius="6">
+            <TextBlock Foreground="White" FontSize="18">Done</TextBlock>
         </Border>
         <ListBox x:Name="DoneTasks" Grid.Column="4" Height="NaN" Margin="0,35,0,0" HorizontalContentAlignment="Stretch">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <Border BorderBrush="Gray" Height="110" BorderThickness="1" CornerRadius="2">
-                        <Grid Grid.Column="0" Height="110">
-                            <TextBlock FontSize="10" Background="#D3D3D3" Margin="3" Width="60" Height="20" VerticalAlignment="Top" HorizontalAlignment="Left" Text="{Binding CreatedDate}"/>
-                            <TextBlock VerticalAlignment="Center" Text="{Binding Name}"/>
-                            <TextBlock VerticalAlignment="Bottom" Margin="3" HorizontalAlignment="Left" FontSize="12" Width="250" Background="#D3D3D3" Text="{Binding Id}"/>
+                        <Grid Grid.Column="0"  Height="150">
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <Border Grid.Row="0" CornerRadius="5" Height="20" Background="#C6E2FF" HorizontalAlignment="Left" BorderThickness="1" Margin="3" >
+                                <TextBlock FontSize="13" HorizontalAlignment="Left" Text="{Binding CreatedDateFormatted}"/>
+                            </Border>
+
+                            <Border Grid.Row="0" CornerRadius="5" Height="20" Background="#FA8072" HorizontalAlignment="Right" BorderThickness="1" Margin="3" >
+                                <TextBlock FontSize="13" HorizontalAlignment="Right" Text="{Binding DeadlineDateFormatted}"/>
+                            </Border>
+
+                            <TextBlock Grid.Row="1" FontSize="16" Text="{Binding Name}"/>
+                            <TextBlock Grid.Row="2" FontSize="13" HorizontalAlignment="Left" Text="{Binding Priority}"/>
+                            <TextBlock Grid.Row="3" Margin="3" HorizontalAlignment="Left" FontSize="14" Text="{Binding Id}"/>
                         </Grid>
                     </Border>
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-        <Button Height="30" Width="150" x:Name="testButton" Click="testButton_Click_1" />
+        <Button x:Name="addTask" Height="50" Width="250" VerticalAlignment="Bottom" Content="+" FontSize="30" Click="addTask_Click"/>
     </Grid>
 </Window>

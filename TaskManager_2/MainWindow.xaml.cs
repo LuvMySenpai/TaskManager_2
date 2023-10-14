@@ -32,12 +32,36 @@ namespace TaskManager_2
             }
         }
 
-        private void testButton_Click_1(object sender, RoutedEventArgs e)
+        private void addTask_Click(object sender, RoutedEventArgs e)
         {
+            int id = -1;
+            EditTask editTask = new EditTask(id);
+            if (editTask.ShowDialog() == true)
+            {
+                Refresh();
+            }
+        }
+
+        private void Refresh()
+        {
+            toDoTasks.ItemsSource = null;
+
             using (MainContext db = new MainContext())
             {
-                DB_data.Task task = new DB_data.Task();
-                db.Tasks.Add(task);
+                var tasks = db.Tasks.ToList();
+                toDoTasks.ItemsSource = tasks;
+            }
+        }
+
+        private void EditTask_Click(object sender, RoutedEventArgs e)
+        {
+            var tag = int.TryParse(((Button)sender).Tag.ToString(), out int id);
+
+            EditTask editTask = new EditTask(id);
+            if (editTask.ShowDialog() == true)
+            {
+                Refresh();
+                //comment
             }
         }
     }

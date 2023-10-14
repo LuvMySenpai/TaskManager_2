@@ -1,0 +1,38 @@
+﻿<Window x:Class="TaskManager_2.EditTask"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TaskManager_2"
+        mc:Ignorable="d"
+        Title="EditTask" Height="450" Width="400">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.7*"/>
+            <RowDefinition Height="0.3*"/>
+            <RowDefinition Height="0.4*"/>
+            <RowDefinition Height="0.3*"/>
+            <RowDefinition/>
+            <RowDefinition Height="0.3*"/>
+            <RowDefinition Height="0.4*"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <TextBlock Grid.Row="1" Grid.Column="0" Text="Название:" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+        <TextBox x:Name="taskName" Grid.Row="2" Grid.Column="0" Width="150" Height="25" FontSize="16"/>
+        <TextBlock Grid.Row="1" Grid.Column="1" Text="Приоритет:" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+        <ComboBox x:Name="taskPriority" Grid.Row="2" Grid.Column="1" Width="150" Height="25" FontSize="12">
+            <ComboBoxItem Content="Наивысший приоритет"/>
+            <ComboBoxItem Content="Средний приоритет"/>
+            <ComboBoxItem Content="Низкий приоритет"/>
+        </ComboBox>
+        <TextBlock Grid.Row="3" Grid.ColumnSpan="2" Text="Описание:" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="16"/>
+        <TextBox x:Name="taskDescription" Grid.Row="4" Grid.ColumnSpan="2" Margin="5" TextWrapping="Wrap" FontSize="14"/>
+        <TextBlock Grid.Row="5" Grid.ColumnSpan="2" Text="Дата дедлайна:" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="16"/>
+        <DatePicker x:Name="dateChoose" Grid.Row="6" Grid.ColumnSpan="2" Height="25" Width="250" FontSize="13"/>
+        <Button x:Name="saveChanges" Grid.Row="7" Grid.ColumnSpan="2" Height="30" Width="150" Content="Сохранить" FontSize="16" Click="SaveChanges_Click" />
+    </Grid>
+</Window>

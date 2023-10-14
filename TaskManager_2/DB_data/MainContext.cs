@@ -9,7 +9,7 @@ using System.Windows.Markup;
 
 namespace TaskManager_2.DB_data
 {
-    internal class MainContext : DbContext
+    public class MainContext : DbContext
     {
         private readonly string connectionHome = "Data Source=localhost;Initial Catalog=TaskManager_PB42;Trusted_Connection=True;TrustServerCertificate=True";
         public readonly string connectionAKVT = "Data Source=192.168.221.12;Initial Catalog=TaskManager_PB42;User ID=user04;Password=04;TrustServerCertificate=True";
