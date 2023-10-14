@@ -25,6 +25,10 @@ namespace TaskManager_2
         {
             InitializeComponent();
             _id = id;
+            if(id > -1)
+            {
+                DisplayData();
+            }
         }
 
         private void DisplayData()
