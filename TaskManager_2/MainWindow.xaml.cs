@@ -119,5 +119,67 @@ namespace TaskManager_2
                 Refresh();
             }
         }
+
+        private void ToDone_Click(object sender, RoutedEventArgs e)
+        {
+            var tag = int.TryParse(((Button)sender).Tag.ToString(), out int id);
+
+            using (MainContext db = new MainContext())
+            {
+                DB_data.Task task = db.Tasks.FirstOrDefault(x => x.Id == id);
+                if (task != null)
+                {
+                    task.FulfillmentType = 2;
+                    db.SaveChanges();
+                }
+
+                Refresh();
+            }
+        }
+
+        private void searchBar_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (searchBar.Text != "")
+            {
+                toDoTasks.ItemsSource = null;
+                wrkInPrgsTasks.ItemsSource = null;
+                doneTasks.ItemsSource = null;
+
+                List<DB_data.Task> toDoList = new List<DB_data.Task>();
+                List<DB_data.Task> WIPList = new List<DB_data.Task>();
+                List<DB_data.Task> doneList = new List<DB_data.Task>();
+
+                using (MainContext db = new MainContext())
+                {
+                    var tasks = db.Tasks.ToList();
+                    tasks = tasks.Where<DB_data.Task>(x => x.Name.Contains(searchBar.Text)).ToList();
+
+                    for (int ind = 0; ind < tasks.Count; ind++)
+                    {
+                        if (tasks[ind].FulfillmentType == 0)
+                        {
+                            toDoList.Add(tasks[ind]);
+                        }
+                        else if (tasks[ind].FulfillmentType == 1)
+                        {
+                            WIPList.Add(tasks[ind]);
+                        }
+                        else if (tasks[ind].FulfillmentType == 2)
+                        {
+                            doneList.Add(tasks[ind]);
+                        }
+                    }
+                }
+
+                toDoTasks.ItemsSource = toDoList;
+                wrkInPrgsTasks.ItemsSource = WIPList;
+                doneTasks.ItemsSource = doneList;
+            }
+            else
+            {
+                Refresh();
+            }
+        }
     }
+    
 }

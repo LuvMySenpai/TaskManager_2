@@ -76,9 +76,9 @@
 
                                 <TextBlock Grid.Row="1" FontSize="16" Text="{Binding Name}"/>
                                 <TextBlock Grid.Row="2" FontSize="13" VerticalAlignment="Bottom" HorizontalAlignment="Left" Text="{Binding Priority}"/>
-                                <Button Grid.Row="3" Height="22" Width="80" Content="Начать работу" Tag="{Binding Id}" Click="ToWIP_Click" FontSize="12" HorizontalAlignment="Center"/>
-                                <Button Grid.Row="3" Margin="5 0 0 0" Height="22" Width="80" Content="Редактировать" Tag="{Binding Id}" Click="EditTask_Click"  FontSize="12" HorizontalAlignment="Left"/>
-                                <Button Grid.Row="3" Margin="0 0 5 0" Height="22" Width="80" Content="Удалить" Tag="{Binding Id}" Click="DeleteTask_Click" FontSize="12" HorizontalAlignment="Right"/>
+                                <Button Grid.Row="3" Height="22" Width="70" Content="Закончить работу" Tag="{Binding Id}" Click="ToDone_Click" FontSize="10" HorizontalAlignment="Center"/>
+                                <Button Grid.Row="3" Margin="5 0 0 0" Height="22" Width="70" Content="Редактировать" Tag="{Binding Id}" Click="EditTask_Click"  FontSize="10" HorizontalAlignment="Left"/>
+                                <Button Grid.Row="3" Margin="0 0 5 0" Height="22" Width="70" Content="Удалить" Tag="{Binding Id}" Click="DeleteTask_Click" FontSize="10" HorizontalAlignment="Right"/>
                                 <TextBlock Grid.Row="4" Margin="3" HorizontalAlignment="Left" FontSize="14" Text="{Binding Id}"/>
                             </Grid>
                         </Border>
@@ -112,9 +112,8 @@
 
                                 <TextBlock Grid.Row="1" FontSize="16" Text="{Binding Name}"/>
                                 <TextBlock Grid.Row="2" FontSize="13" VerticalAlignment="Bottom" HorizontalAlignment="Left" Text="{Binding Priority}"/>
-                                <Button Grid.Row="3" Height="22" Width="80" Content="Начать работу" Tag="{Binding Id}" Click="ToWIP_Click" FontSize="12" HorizontalAlignment="Center"/>
-                                <Button Grid.Row="3" Margin="5 0 0 0" Height="22" Width="80" Content="Редактировать" Tag="{Binding Id}" Click="EditTask_Click"  FontSize="12" HorizontalAlignment="Left"/>
-                                <Button Grid.Row="3" Margin="0 0 5 0" Height="22" Width="80" Content="Удалить" Tag="{Binding Id}" Click="DeleteTask_Click" FontSize="12" HorizontalAlignment="Right"/>
+                                <Button Grid.Row="3" Margin="5 0 0 0" Height="22" Width="100" Content="Редактировать" Tag="{Binding Id}" Click="EditTask_Click"  FontSize="14" HorizontalAlignment="Left"/>
+                                <Button Grid.Row="3" Margin="0 0 5 0" Height="22" Width="100" Content="Удалить" Tag="{Binding Id}" Click="DeleteTask_Click" FontSize="14" HorizontalAlignment="Right"/>
                                 <TextBlock Grid.Row="4" Margin="3" HorizontalAlignment="Left" FontSize="14" Text="{Binding Id}"/>
                             </Grid>
                         </Border>
@@ -123,5 +122,6 @@
             </ListBox>
         </ScrollViewer>
         <Button x:Name="addTask" Height="30" Width="250" VerticalAlignment="Bottom" Content="+" FontSize="20" Click="AddTask_Click"/>
+        <TextBox Grid.Column="2" x:Name="searchBar" Height="30" Width="200" Margin="0 0 0 5" VerticalAlignment="Bottom" HorizontalAlignment="Center" KeyDown="searchBar_KeyDown" />
     </Grid>
 </Window>
